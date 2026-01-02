@@ -10,17 +10,17 @@ class Settings(BaseSettings):
     """Application settings."""
     
     # Environment
-    ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
-    DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"
+    ENVIRONMENT: str =  "development"
+    DEBUG: bool = False
     
     # API
     API_V1_PREFIX: str = "/api/v1"
     CORS_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:3000"]
     
     # Data paths
-    DATA_RAW_DIR: str = "backend/data/raw"
-    DATA_PROCESSED_DIR: str = "backend/data/processed"
-    MODELS_DIR: str = "backend/app/models"
+    DATA_RAW_DIR: str = "data/raw"
+    DATA_PROCESSED_DIR: str = "data/processed"
+    MODELS_DIR: str = "app/models"
     
     # NLP
     SPACY_MODEL: str = "en_core_web_sm"
