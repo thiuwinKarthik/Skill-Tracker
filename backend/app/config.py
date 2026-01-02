@@ -33,6 +33,7 @@ class Settings(BaseSettings):
     # Data sources (API keys should be in .env)
     GITHUB_API_KEY: str = os.getenv("GITHUB_API_KEY", "")
     JOB_BOARD_API_KEY: str = os.getenv("JOB_BOARD_API_KEY", "")
+    JOB_BOARD_APP_ID: str = os.getenv("JOB_BOARD_APP_ID", "")
     
     # Pipeline
     PIPELINE_SCHEDULE_HOUR: int = 2  # 2 AM daily
