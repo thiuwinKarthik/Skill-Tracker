@@ -1,0 +1,84 @@
+/* ===============================
+   CARD CONTAINER
+================================ */
+.card {
+  background: #020617;                /* Dark slate */
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 1px solid #1e293b;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Hover Effect */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.65);
+  border-color: #38bdf8;
+}
+
+/* ===============================
+   CARD HEADER
+================================ */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+/* ===============================
+   TITLES
+================================ */
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.2;
+}
+
+.card-subtitle {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+}
+
+/* ===============================
+   CONTENT
+================================ */
+.card-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #cbd5f5;
+}
+
+/* ===============================
+   ACTION AREA
+================================ */
+.card-action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Example button styling inside card-action */
+.card-action button {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.card-action button:hover {
+  background: #38bdf8;
+  color: #020617;
+  transform: translateY(-2px);
+}

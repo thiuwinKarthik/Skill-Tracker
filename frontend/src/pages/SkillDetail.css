@@ -1,0 +1,734 @@
+.skill-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+  
+  /* Back Link */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-lg);
+    background: rgba(37, 99, 235, 0.08);
+    transition: all var(--transition-base);
+  }
+  
+  .back-link:hover {
+    background: var(--gradient-primary);
+    color: white;
+    transform: translateX(-4px);
+  }
+  
+  /* Skill Detail Header */
+  .skill-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(124, 58, 237, 0.02) 100%);
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skill-detail-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+  }
+  
+  .skill-header-info {
+    flex: 1;
+  }
+  
+  .skill-detail-header h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.025em;
+  }
+  
+  .skill-detail-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+  }
+  
+  .skill-normalized {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  
+  .skill-category-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  }
+  
+  /* Risk Badge */
+  .risk-badge-large {
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 180px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .risk-badge-large::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+  }
+  
+  .risk-badge-large.risk-high {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+    border: 2px solid var(--danger-color);
+  }
+  
+  .risk-badge-large.risk-high::before {
+    background: var(--gradient-danger);
+  }
+  
+  .risk-badge-large.risk-medium {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+    border: 2px solid var(--warning-color);
+  }
+  
+  .risk-badge-large.risk-medium::before {
+    background: var(--gradient-warning);
+  }
+  
+  .risk-badge-large.risk-low {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border: 2px solid var(--success-color);
+  }
+  
+  .risk-badge-large.risk-low::before {
+    background: var(--gradient-success);
+  }
+  
+  .risk-label-large {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  
+  .risk-value-large {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  
+  .risk-badge-large.risk-high .risk-value-large {
+    color: var(--danger-color);
+  }
+  
+  .risk-badge-large.risk-medium .risk-value-large {
+    color: var(--warning-color);
+  }
+  
+  .risk-badge-large.risk-low .risk-value-large {
+    color: var(--success-color);
+  }
+  
+  /* Description Card */
+  .description-card {
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .description-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+  }
+  
+  .description-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-light);
+  }
+  
+  .description-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  
+  .skill-meta {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  .meta-badge {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .meta-badge.category {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+  }
+  
+  .meta-badge.popularity-very-high {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+  }
+  
+  .meta-badge.popularity-high {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--info-color);
+  }
+  
+  .meta-badge.popularity-medium {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+  }
+  
+  .meta-badge.popularity-low {
+    background: rgba(107, 114, 128, 0.1);
+    color: var(--text-secondary);
+  }
+  
+  .meta-badge.trend-info.trend-growing {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+  }
+  
+  .meta-badge.trend-info.trend-stable {
+    background: rgba(107, 114, 128, 0.1);
+    color: var(--text-secondary);
+  }
+  
+  .meta-badge.trend-info.trend-declining {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+  }
+  
+  .skill-description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.125rem;
+    margin: 0;
+  }
+  
+  /* Skill Detail Grid */
+  .skill-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  /* Overview Card */
+  .overview-card {
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    padding: 1.75rem;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .overview-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+  }
+  
+  .overview-header {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .overview-header::before {
+    content: '📊';
+    font-size: 1.5rem;
+  }
+  
+  .overview-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .overview-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-base);
+  }
+  
+  .overview-metric:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .metric-value-large {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+  
+  .metric-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  
+  .trend-badge,
+  .risk-category-badge {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .trend-badge.trend-increasing {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+  }
+  
+  .trend-badge.trend-decreasing {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+  }
+  
+  .trend-badge.trend-stable {
+    background: rgba(107, 114, 128, 0.1);
+    color: var(--text-secondary);
+  }
+  
+  /* Metrics List */
+  .metrics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .metric-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--border-light);
+    transition: background var(--transition-base);
+    border-radius: var(--radius-lg);
+  }
+  
+  .metric-item:hover {
+    background: var(--border-light);
+    margin: 0 -0.25rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .metric-item:last-child {
+    border-bottom: none;
+  }
+  
+  .metric-item-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+  
+  .metric-item-label {
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .metric-item-hint {
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+    max-width: 250px;
+  }
+  
+  .metric-item-value {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text-primary);
+  }
+  
+  .metric-item-value.positive {
+    color: var(--success-color);
+  }
+  
+  .metric-item-value.negative {
+    color: var(--danger-color);
+  }
+  
+  .metric-item-value.neutral {
+    color: var(--text-secondary);
+  }
+  
+  /* Chart Card */
+  .chart-card {
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    padding: 1.75rem;
+    border: 1px solid var(--border-color);
+    grid-column: span 2;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .chart-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+  }
+  
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .chart-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  
+  .chart-container {
+    height: 300px;
+    position: relative;
+  }
+  
+  /* Related Skills */
+  .related-skills-section {
+    margin-top: 2rem;
+  }
+  
+  .related-skills-section h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .related-skills-section h3::before {
+    content: '🔗';
+    font-size: 1.25rem;
+  }
+  
+  .related-skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .related-skill-link {
+    padding: 0.75rem 1.25rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: var(--radius-full);
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .related-skill-link:hover {
+    background: var(--gradient-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+  }
+  
+  .related-skill-link.critical {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+  }
+  
+  .related-skill-link.critical:hover {
+    background: var(--gradient-danger);
+    color: white;
+  }
+  
+  .related-skill-link.emerging {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+  }
+  
+  .related-skill-link.emerging:hover {
+    background: var(--gradient-success);
+    color: white;
+  }
+  
+  /* Action Buttons */
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .action-btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-base);
+  }
+  
+  .action-btn.primary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  }
+  
+  .action-btn.primary:hover {
+    background: var(--gradient-primary-hover);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .action-btn.secondary {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+  }
+  
+  .action-btn.secondary:hover {
+    background: rgba(37, 99, 235, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .action-btn.danger {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+  }
+  
+  .action-btn.danger:hover {
+    background: rgba(239, 68, 68, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  /* Empty State */
+  .empty-state {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(37, 99, 235, 0.01) 100%);
+    border-radius: var(--radius-xl);
+    border: 2px dashed rgba(37, 99, 235, 0.3);
+  }
+  
+  .empty-state-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    opacity: 0.5;
+  }
+  
+  .empty-state-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .empty-state-description {
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .skill-detail-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .chart-card {
+      grid-column: span 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .skill-detail {
+      padding: 1rem;
+    }
+    
+    .skill-detail-header {
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+    
+    .skill-detail-header h1 {
+      font-size: 2rem;
+    }
+    
+    .risk-badge-large {
+      width: 100%;
+      min-width: auto;
+    }
+    
+    .description-header {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .skill-meta {
+      justify-content: flex-start;
+    }
+    
+    .overview-metrics {
+      grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+      flex-direction: column;
+    }
+    
+    .action-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .skill-detail-header h1 {
+      font-size: 1.75rem;
+    }
+    
+    .skill-category-tag {
+      width: 100%;
+      justify-content: center;
+      padding-right: 20px;
+    }
+    
+    .meta-badge {
+      flex: 1;
+      justify-content: center;
+    }
+    
+    .metric-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    
+    .metric-item-value {
+      align-self: flex-end;
+    }
+  }
+  
+  /* Detail Animation */
+  @keyframes detail-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
+    }
+  }
+  
+  .detail-glow {
+    animation: detail-glow 2s ease-in-out infinite;
+  }

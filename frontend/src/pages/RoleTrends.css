@@ -1,0 +1,688 @@
+.role-trends-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+  
+  /* Page Header */
+  .page-header {
+    margin-bottom: 1.5rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.03) 100%);
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+  }
+  
+  .page-header h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.025em;
+  }
+  
+  .page-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+  }
+  
+  .page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    max-width: 800px;
+    line-height: 1.7;
+  }
+  
+  /* Chart Section */
+  .chart-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .chart-card {
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    padding: 1.75rem;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: all var(--transition-base);
+  }
+  
+  .chart-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .chart-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+  }
+  
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-light);
+  }
+  
+  .chart-header h3 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .chart-legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+  }
+  
+  .chart-container {
+    height: 400px;
+    position: relative;
+  }
+  
+  /* Roles Grid */
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .role-card {
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    padding: 1.75rem;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+  
+  .role-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-2xl);
+    border-color: transparent;
+  }
+  
+  .role-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  }
+  
+  .role-card.hot-trend::before {
+    background: var(--gradient-danger);
+  }
+  
+  .role-card.growing-trend::before {
+    background: var(--gradient-success);
+  }
+  
+  .role-card.stable-trend::before {
+    background: var(--gradient-primary);
+  }
+  
+  .role-card.declining-trend::before {
+    background: var(--gradient-warning);
+  }
+  
+  .role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-light);
+    position: relative;
+  }
+  
+  .role-name {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  
+  .trend-badge {
+    padding: 0.375rem 0.875rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    white-space: nowrap;
+  }
+  
+  .trend-badge.hot {
+    background: var(--gradient-danger);
+    color: white;
+  }
+  
+  .trend-badge.growing {
+    background: var(--gradient-success);
+    color: white;
+  }
+  
+  .trend-badge.stable {
+    background: var(--gradient-primary);
+    color: white;
+  }
+  
+  .trend-badge.declining {
+    background: var(--gradient-warning);
+    color: var(--text-primary);
+  }
+  
+  .role-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .role-metric {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-base);
+  }
+  
+  .role-metric:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .role-metric-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+  
+  .role-metric-label {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  
+  .role-skills {
+    margin-bottom: 1.5rem;
+  }
+  
+  .skills-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .skills-label::before {
+    content: '🔧';
+    font-size: 1rem;
+  }
+  
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .skill-tag {
+    padding: 0.5rem 0.875rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .skill-tag:hover {
+    background: var(--gradient-primary);
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  .skill-tag.critical {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+  }
+  
+  .skill-tag.critical:hover {
+    background: var(--gradient-danger);
+    color: white;
+  }
+  
+  .skill-tag.emerging {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+  }
+  
+  .skill-tag.emerging:hover {
+    background: var(--gradient-success);
+    color: white;
+  }
+  
+  .skill-tag.in-demand {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+  }
+  
+  .skill-tag.in-demand:hover {
+    background: var(--gradient-warning);
+    color: var(--text-primary);
+  }
+  
+  .role-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+  }
+  
+  .role-updated {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+  
+  .explore-btn {
+    padding: 0.5rem 1.25rem;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    border-radius: var(--radius-lg);
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+  
+  .explore-btn:hover {
+    background: var(--gradient-primary);
+    color: white;
+    transform: translateX(4px);
+  }
+  
+  /* Trend Analysis */
+  .trend-analysis {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(14, 165, 233, 0.02) 100%);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+  }
+  
+  .analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .analysis-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  
+  .analysis-period {
+    display: flex;
+    gap: 0.5rem;
+    background: var(--bg-color);
+    padding: 0.25rem;
+    border-radius: var(--radius-lg);
+  }
+  
+  .period-btn {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .period-btn.active {
+    background: var(--gradient-info);
+    color: white;
+  }
+  
+  .analysis-insights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .insight-card {
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-base);
+  }
+  
+  .insight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .insight-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .insight-card.growing .insight-icon {
+    background: var(--gradient-success);
+    color: white;
+  }
+  
+  .insight-card.declining .insight-icon {
+    background: var(--gradient-danger);
+    color: white;
+  }
+  
+  .insight-card.hot .insight-icon {
+    background: var(--gradient-warning);
+    color: white;
+  }
+  
+  .insight-card.stable .insight-icon {
+    background: var(--gradient-primary);
+    color: white;
+  }
+  
+  .insight-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .insight-description {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  
+  /* Role Comparison */
+  .role-comparison {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+  }
+  
+  .comparison-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .comparison-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .comparison-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+  
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .comparison-item {
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-base);
+  }
+  
+  .comparison-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .comparison-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-light);
+  }
+  
+  .comparison-role {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .comparison-score {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: var(--gradient-primary);
+    color: white;
+  }
+  
+  .comparison-details {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  
+  /* Empty State */
+  .empty-state {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(37, 99, 235, 0.01) 100%);
+    border-radius: var(--radius-xl);
+    border: 2px dashed rgba(37, 99, 235, 0.3);
+  }
+  
+  .empty-state-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    opacity: 0.5;
+  }
+  
+  .empty-state-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .empty-state-description {
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .roles-grid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .role-trends-page {
+      padding: 1rem;
+    }
+    
+    .page-header {
+      padding: 1.5rem;
+    }
+    
+    .page-header h1 {
+      font-size: 2rem;
+    }
+    
+    .roles-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .chart-header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+    
+    .chart-legend {
+      justify-content: center;
+    }
+    
+    .role-metrics {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+    
+    .role-metric {
+      padding: 0.75rem;
+    }
+    
+    .role-metric-value {
+      font-size: 1.25rem;
+    }
+    
+    .role-footer {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .explore-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .role-metrics {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .role-header {
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: stretch;
+    }
+    
+    .trend-badge {
+      align-self: flex-start;
+    }
+    
+    .analysis-period {
+      flex-wrap: wrap;
+    }
+    
+    .period-btn {
+      flex: 1;
+      text-align: center;
+    }
+  }
+  
+  /* Trend Animation */
+  @keyframes trend-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
+    }
+  }
+  
+  .trend-glow {
+    animation: trend-glow 2s ease-in-out infinite;
+  }
