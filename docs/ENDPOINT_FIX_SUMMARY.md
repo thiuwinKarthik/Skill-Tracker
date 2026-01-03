@@ -124,3 +124,5 @@ After these fixes:
 - `backend/app/pipeline/daily_pipeline.py` - Enhanced data combination
 - `backend/app/api/skills.py` - Improved data loading and parsing
 
+
+

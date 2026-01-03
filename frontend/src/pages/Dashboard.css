@@ -137,7 +137,32 @@
     transition: all var(--transition-base);
     min-height: 140px;
   }
-  
+  .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pipeline-btn {
+  padding: 0.6rem 1.2rem;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pipeline-btn:hover {
+  background: #4f46e5;
+}
+
+.pipeline-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
   .stat-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-2xl);

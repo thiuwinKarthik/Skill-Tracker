@@ -134,3 +134,5 @@ After pipeline runs, you should see:
 
 The emerging endpoint will now always return results, and the data will reflect realistic, current trends!
 
+
+

@@ -4,6 +4,7 @@ import SkillCard from '../components/SkillCard'
 import Loading from '../components/Loading'
 import Error from '../components/Error'
 import { getEmergingSkills } from '../services/api'
+import { Sparklines, SparklinesLine } from 'react-sparklines'
 import './EmergingSkills.css'
 
 const EmergingSkills = () => {
@@ -29,13 +30,8 @@ const EmergingSkills = () => {
     }
   }
 
-  if (loading) {
-    return <Loading message="Loading emerging skills..." />
-  }
-
-  if (error) {
-    return <Error message={error} onRetry={loadEmergingSkills} />
-  }
+  if (loading) return <Loading message="Loading emerging skills..." />
+  if (error) return <Error message={error} onRetry={loadEmergingSkills} />
 
   return (
     <div className="emerging-page">
@@ -43,7 +39,8 @@ const EmergingSkills = () => {
         <div>
           <h1>Emerging Skills</h1>
           <p className="page-subtitle">
-            Skills with low obsolescence risk and high growth potential. These technologies show strong growth trends, increasing demand, and active community engagement. Invest in these skills for future-proof career growth.
+            Skills with low obsolescence risk and high growth potential.
+            Focus on technologies showing increasing demand, active community engagement, and strong growth trends.
           </p>
         </div>
       </div>
@@ -54,8 +51,8 @@ const EmergingSkills = () => {
           <div>
             <h3>What are "Emerging Skills"?</h3>
             <p>
-              Emerging skills show strong growth trends, increasing demand, and active community engagement.
-              These technologies are gaining traction and may be valuable additions to your skill set.
+              Emerging skills are gaining traction and may be valuable additions to your skill set.
+              Keep an eye on trends, demand, and community engagement.
             </p>
           </div>
         </div>
@@ -65,10 +62,19 @@ const EmergingSkills = () => {
         <div className="section-header">
           <h2>{skills.length} Emerging Skills</h2>
         </div>
+
         {skills.length > 0 ? (
           <div className="skills-grid">
             {skills.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
+              <SkillCard key={skill.name} skill={skill}>
+                {/* Inline mini chart for trend */}
+                <div className="skill-trend-chart">
+                  <Sparklines data={skill.historical_data || [skill.current_demand, skill.forecast_demand]}>
+                    <SparklinesLine color="#4caf50" />
+                  </Sparklines>
+                  <span className="trend-label">{skill.trend}</span>
+                </div>
+              </SkillCard>
             ))}
           </div>
         ) : (
@@ -82,4 +88,3 @@ const EmergingSkills = () => {
 }
 
 export default EmergingSkills
-

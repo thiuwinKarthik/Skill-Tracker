@@ -9,6 +9,9 @@ import uvicorn
 
 from app.api import skills, roles, pipeline, health
 from app.config import settings
+from dotenv import load_dotenv
+load_dotenv()
+
 
 
 @asynccontextmanager

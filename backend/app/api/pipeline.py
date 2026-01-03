@@ -8,6 +8,8 @@ import asyncio
 
 from app.models import PipelineStatus
 from app.pipeline.daily_pipeline import DailyPipeline
+from dotenv import load_dotenv
+load_dotenv()
 
 router = APIRouter()
 

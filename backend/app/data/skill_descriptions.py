@@ -150,3 +150,5 @@ def get_default_description(skill_name: str) -> Dict[str, str]:
         "trend": "Stable"
     }
 
+
+

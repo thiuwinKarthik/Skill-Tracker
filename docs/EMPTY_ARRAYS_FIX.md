@@ -118,3 +118,5 @@ The pipeline now handles the case when there's no historical data by creating ba
 3. **Check file paths** - Make sure `DATA_PROCESSED_DIR` in config matches actual directory
 4. **Restart backend** - Sometimes a restart helps if files were created after startup
 
+
+

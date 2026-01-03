@@ -17,3 +17,5 @@ const Error = ({ message = 'Something went wrong', onRetry }) => {
 
 export default Error
 
+
+

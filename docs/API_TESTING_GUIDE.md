@@ -710,3 +710,5 @@ All endpoints may return the following error responses:
 
 4. **CORS**: The API is configured to accept requests from `http://localhost:5173` (frontend).
 
+
+

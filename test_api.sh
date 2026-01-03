@@ -40,3 +40,5 @@ echo "=========================================="
 echo -e "\nNote: For full JSON output, use jq or python -m json.tool"
 echo "Example: curl -s $BASE_URL/health | python -m json.tool"
 
+
+

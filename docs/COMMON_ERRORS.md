@@ -198,3 +198,5 @@ Error: "Address already in use" when starting the backend.
 2. **Use Swagger UI** - Visit `http://localhost:8000/docs` for interactive API testing
 3. **Check the API Testing Guide** - See `docs/API_TESTING_GUIDE.md`
 
+
+

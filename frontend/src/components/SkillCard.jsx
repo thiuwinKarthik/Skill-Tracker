@@ -66,3 +66,5 @@ const SkillCard = ({ skill }) => {
 
 export default SkillCard
 
+
+

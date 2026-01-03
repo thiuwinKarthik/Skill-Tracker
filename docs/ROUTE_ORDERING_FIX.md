@@ -54,3 +54,5 @@ curl http://localhost:8000/skills/React
 3. Always put specific routes before parameterized routes
 4. Use the debug script: `python debug_api.py` to test all endpoints
 
+
+

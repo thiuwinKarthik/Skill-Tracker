@@ -4,8 +4,23 @@ import Card from '../components/Card'
 import SkillCard from '../components/SkillCard'
 import Loading from '../components/Loading'
 import Error from '../components/Error'
-import { getHighRiskSkills, getEmergingSkills, getSkills, healthCheck } from '../services/api'
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import {
+  getHighRiskSkills,
+  getEmergingSkills,
+  getSkills,
+  healthCheck,
+  triggerPipeline,
+} from '../services/api'
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts'
 import './Dashboard.css'
 
 const Dashboard = () => {
@@ -15,6 +30,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [health, setHealth] = useState(null)
+  const [pipelineRunning, setPipelineRunning] = useState(false)
 
   useEffect(() => {
     loadDashboardData()
@@ -33,7 +49,7 @@ const Dashboard = () => {
       const [highRisk, emerging, allSkills] = await Promise.all([
         getHighRiskSkills(5),
         getEmergingSkills(5),
-        getSkills({ limit: 100 })
+        getSkills({ limit: 100 }),
       ])
 
       setHighRiskSkills(highRisk)
@@ -41,21 +57,24 @@ const Dashboard = () => {
 
       // Calculate stats
       const totalSkills = allSkills.length
-      const highRiskCount = allSkills.filter(s => s.risk_score >= 0.7).length
-      const lowRiskCount = allSkills.filter(s => s.risk_score <= 0.3).length
-      const avgRisk = allSkills.reduce((sum, s) => sum + s.risk_score, 0) / totalSkills
+      const highRiskCount = allSkills.filter((s) => s.risk_score >= 0.7).length
+      const lowRiskCount = allSkills.filter((s) => s.risk_score <= 0.3).length
+      const avgRisk =
+        totalSkills > 0
+          ? allSkills.reduce((sum, s) => sum + s.risk_score, 0) / totalSkills
+          : 0
 
       setStats({
         totalSkills,
         highRiskCount,
         lowRiskCount,
         avgRisk,
-        chartData: allSkills.slice(0, 10).map(skill => ({
+        chartData: allSkills.slice(0, 10).map((skill) => ({
           name: skill.name,
           current: skill.current_demand,
           forecast: skill.forecast_demand,
-          risk: (skill.risk_score * 100).toFixed(0)
-        }))
+          risk: (skill.risk_score * 100).toFixed(0),
+        })),
       })
     } catch (err) {
       console.error('Dashboard load error:', err)
@@ -65,13 +84,31 @@ const Dashboard = () => {
     }
   }
 
-  if (loading) {
-    return <Loading message="Loading dashboard..." />
-  }
+  const handleRunPipeline = async () => {
+  try {
+    setPipelineRunning(true)
+    await triggerPipeline() // triggers pipeline, returns immediately
 
-  if (error) {
-    return <Error message={error} onRetry={loadDashboardData} />
+    // Poll every 2 seconds until new data is available
+    const interval = setInterval(async () => {
+      const emerging = await getEmergingSkills(5)
+      const highRisk = await getHighRiskSkills(5)
+
+      setEmergingSkills(emerging)
+      setHighRiskSkills(highRisk)
+
+      // Stop polling if new data appears
+      if (emerging.length > 0 || highRisk.length > 0) {
+        clearInterval(interval)
+        setPipelineRunning(false)
+      }
+    }, 2000)
+  } catch (err) {
+    console.error(err)
+    setPipelineRunning(false)
   }
+}
+
 
   return (
     <div className="dashboard">
@@ -82,13 +119,32 @@ const Dashboard = () => {
             Monitor technology trends and predict skill demand with AI-powered insights
           </p>
         </div>
-        {health && (
-          <div className="health-status">
-            <span className={`status-indicator ${health.status === 'healthy' ? 'online' : 'offline'}`}></span>
-            <span>API {health.status === 'healthy' ? 'Online' : 'Offline'}</span>
-          </div>
-        )}
+
+        <div className="header-actions">
+          {health && (
+            <div className="health-status">
+              <span
+                className={`status-indicator ${
+                  health.status === 'healthy' ? 'online' : 'offline'
+                }`}
+              ></span>
+              <span>API {health.status === 'healthy' ? 'Online' : 'Offline'}</span>
+            </div>
+          )}
+
+          <button
+            className="pipeline-btn"
+            onClick={handleRunPipeline}
+            disabled={pipelineRunning}
+          >
+            {pipelineRunning ? 'Running Pipeline…' : 'Run Pipeline'}
+          </button>
+        </div>
       </div>
+
+      {(loading || pipelineRunning) && <Loading message="Fetching latest skills..." />}
+
+      {error && <Error message={error} onRetry={loadDashboardData} />}
 
       {stats && (
         <>
@@ -171,9 +227,7 @@ const Dashboard = () => {
           </div>
           <div className="skills-grid">
             {highRiskSkills.length > 0 ? (
-              highRiskSkills.map((skill) => (
-                <SkillCard key={skill.name} skill={skill} />
-              ))
+              highRiskSkills.map((skill) => <SkillCard key={skill.name} skill={skill} />)
             ) : (
               <p className="empty-state">No high-risk skills found</p>
             )}
@@ -189,9 +243,7 @@ const Dashboard = () => {
           </div>
           <div className="skills-grid">
             {emergingSkills.length > 0 ? (
-              emergingSkills.map((skill) => (
-                <SkillCard key={skill.name} skill={skill} />
-              ))
+              emergingSkills.map((skill) => <SkillCard key={skill.name} skill={skill} />)
             ) : (
               <p className="empty-state">No emerging skills found</p>
             )}
@@ -203,4 +255,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard
-
